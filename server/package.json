@@ -1,14 +1,25 @@
 {
-  "name": "serverless-cognito",
+  "name": "order-now",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "nodemon --exec \"sls offline start --skipCacheInvalidation -c\""
+  },
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.3",
+    "haversine-distance": "^1.1.4",
+    "mongoose": "^5.2.0",
+    "reflect-metadata": "^0.1.12",
     "serverless-http": "^1.5.5"
   },
   "devDependencies": {
+    "@types/body-parser": "^1.17.0",
     "@types/express": "^4.16.0",
-    "serverless-plugin-typescript": "^1.1.5"
+    "@types/mongoose": "^5.0.18",
+    "serverless-offline": "^3.25.5",
+    "serverless-plugin-typescript": "^1.1.5",
+    "tslint-config-prettier": "^1.13.0"
   }
 }

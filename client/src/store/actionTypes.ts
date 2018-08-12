@@ -1,0 +1,22 @@
+export const CALL_API = 'CALL_API'
+
+export const STORES_REQUEST = 'STORES_REQUEST'
+export const STORES_RECEIVE = 'STORES_RECEIVE'
+export const STORES_ERROR = 'STORES_ERROR'
+
+export const SELECT_STORE = 'SELECT_STORE'
+export const SELECT_MENU = 'SELECT_MENU'
+
+export const RESET_OPTIONS = 'RESET_OPTIONS'
+export const UPDATE_OPTIONS = 'UPDATE_OPTIONS'
+export const UPDATE_ORDER_STATUS = 'UPDATE_ORDER_STATUS'
+
+export const LOAD_USER = 'LOAD_USER'
+export const SET_USER = 'SET_USER'
+
+export const PLACE_ORDER_REQUEST = 'PLACE_ORDER'
+export const PLACE_ORDER_SUCCESS = 'PLACE_ORDER_SUCCESS'
+export const PLACE_ORDER_ERROR = 'PLACE_ORDER_ERROR'
+
+export const ADD_TO_CART = 'ADD_TO_CART'
+export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'

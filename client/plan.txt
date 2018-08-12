@@ -1,0 +1,70 @@
+1. ORDER_STATUS + reson (why it failed)
+2. extra fee for bigger sizes
+3. time displayed on modal check its not UTC but local time
+4. Cart inventory - group by order (store) but display them by menu, tooltip displayed over cart icon (how many items are loaded)
+5. favorite_stores -> sort by alphabetical order
+6. custom_menus -> if i click +, then redirect to "select menu". 
+- alias
+- is_custom -> to display "custom menu(퍼스널 메뉴)"
+  (field (result)) ex) 에스프레소샷 (2)
+7. search -> recently searched by user
+8. map -> make filter icon and put filters inside
+
+9. 나만의 메뉴 리스트가 안 보임?
+10. 즐겨찾기 -> 그냥 자주 방문한 매장으로 표시
+
+
+1. Design
+
+shared on zeplin
+TODO: pic/icons - store in google drive
+TODO: decide space standard
+
+/*
+ * ref: https://blog.mgechev.com/2017/12/07/redux-anti-patterns-race-conditions-state-management-duplication/
+ * some considerations here
+ * 1. state duplication
+ * 2. incorrect information expert (aka wrong place to hold state)
+ * 3. implicit state duplication (use 'reselect' for memoization)
+ * 4. overwrite state updates (caused by the nature of async actions - it gets trickkier when you have to deal with multiple mutations)
+ */
+2. Redux State
+
+Domain States = { menu, store }
+
+App States = { 
+  favorite_stores: id[], 
+  user_locations: {
+    lat,
+    lon,
+  }, -> get distance? : there is a module called "haversine-distance" that calculates distance betwen two coordinates
+  user_info: {
+    name,
+    username,
+    phone_number,
+  }, 
+  closest_stores: id[], 
+  selected_menu: id, 
+  selected_store: id, 
+  current_order: {
+    id,
+    order_status: enum ORDER_STATUS
+    options: localState that overwrites default options
+  }, 
+}
+
+Ui States = { 
+  modals - order_placed/ready (show how many minutes take to finish) 
+}
+
+3. Terms
+
+Order_status: 
+  - not_placed
+  - confirmed: order's been placed and not rejected
+  - cancelled: order's been rejected or cancelled by customer
+  - ready: ready for delivery and waiting for customer
+  - delivered: successfully delivered to customer
+  - failed: customer didn't show up / there was problem in delivery process
+
+

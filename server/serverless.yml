@@ -1,7 +1,8 @@
-service: wankang-server
+service: order-now
 
 plugins:
   - serverless-plugin-typescript 
+  - serverless-offline
 
 provider:
   name: aws
@@ -15,3 +16,5 @@ functions:
     events:
       - http: ANY /
       - http: 'ANY {proxy+}'
+    environment:
+      MONGO_URL: ${file(./config.js):dbSettings.MONGO_URL}

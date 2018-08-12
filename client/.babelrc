@@ -9,7 +9,12 @@
     ["module-resolver", {
       "root": ["./src"],
       "alias": {
-        "components": "./src/components"
+        "components": "./src/components",
+        "screens": "./src/screens",
+        "config": "./src/config",
+        "containers": "./src/containers",
+        "store": "./src/store",
+        "utils": "./src/utils"
       }
     }]
   ]

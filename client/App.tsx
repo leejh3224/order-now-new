@@ -1,24 +1,31 @@
 import * as React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import Main from 'screens'
+import configureStore from 'store'
+import { Provider } from 'react-redux'
+import { persistStore } from 'redux-persist'
+import { PersistGate } from 'redux-persist/integration/react'
+import Amplify from 'aws-amplify'
 
-import A from 'components/a'
+import awsExports from 'config/aws-exports'
 
-export default class App extends React.Component {
+const store = configureStore()
+
+class App extends React.Component {
+  componentDidMount() {
+    Amplify.configure(awsExports)
+  }
+
   render() {
+    const persistor = persistStore(store)
+
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <A />
-      </View>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <Main />
+        </PersistGate>
+      </Provider>
     )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-})
+export default App
