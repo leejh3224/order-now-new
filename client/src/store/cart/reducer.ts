@@ -23,7 +23,7 @@ const cart = handleActions(
 
       return {
         ...state,
-        [store]: Object.keys(state[store]).filter(id => id === menuId),
+        [store]: Object.keys(state[store]).filter(id => id != menuId),
       }
     },
   },

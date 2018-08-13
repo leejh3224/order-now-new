@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { View, TouchableOpacity, StyleSheet } from 'react-native'
+import { TouchableOpacity, StyleSheet } from 'react-native'
 
-import { ItemTitle, ItemDesc } from 'components/base/Fonts'
+import { ItemTitle } from 'components/base/Fonts'
 import ListRow from 'components/base/ListRow'
 
 import { colors } from 'config/theme'

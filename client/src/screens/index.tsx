@@ -1,3 +1,5 @@
+import * as React from 'react'
+
 import {
   createStackNavigator,
   createMaterialTopTabNavigator,
@@ -10,10 +12,6 @@ import {
   modalStackConfig,
   authStackConfig,
 } from 'screens/navigatorOptions'
-
-import * as React from 'react'
-import { SearchBar } from 'react-native-elements'
-import { colors } from 'config/theme'
 
 import ClosestStores from 'containers/ClosestStores'
 import AllMenus from 'containers/AllMenus'
@@ -30,6 +28,9 @@ import AddCustomMenuModal from 'containers/AddCustomMenu'
 import FavoriteStores from 'containers/FavoriteStores'
 import AppBootstrap from 'screens/AppBootstrap'
 import Cart from 'containers/Cart'
+import SearchResult from 'containers/SearchResult'
+
+import SearchForm from 'components/form/SearchForm'
 
 const selectStoreTabs = createMaterialTopTabNavigator(
   {
@@ -47,18 +48,7 @@ const selectStoreTabsWithSearchInput = createStackNavigator(
   {
     initialRouteKey: 'selectStore',
     navigationOptions: {
-      headerTitle: (
-        <SearchBar
-          placeholder="가게 이름을 입력해주세요."
-          containerStyle={{
-            flex: 1,
-            backgroundColor: colors.primary,
-            borderTopColor: 'transparent',
-            borderBottomColor: 'transparent',
-          }}
-          inputStyle={{ backgroundColor: colors.white, fontSize: 13 }}
-        />
-      ),
+      headerTitle: <SearchForm />,
       headerRight: null,
       headerLeft: null,
       headerForceInset: {
@@ -85,6 +75,7 @@ const mainStack = createStackNavigator(
     orderConfirmation: OrderConfirmation,
     orderHistory: OrderHistory,
     cart: Cart,
+    searchResult: SearchResult,
   },
   mainStackConfig,
 )

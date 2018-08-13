@@ -28,8 +28,10 @@ const Cart: React.SFC<Props> = ({
   allMenus,
   removeFromCart,
 }: any) => {
-  const prices = data.map(item => item.data)[0].map(id => allMenus[id].price)
-  const quantities = Object.values(Object.values(values)[0])
+  const prices = (data.map(item => item.data)[0] || []).map(
+    id => (allMenus[id] ? allMenus[id].price : 0),
+  )
+  const quantities = Object.values(Object.values(values)[0] || {})
 
   return (
     <ScreenTemplate
@@ -49,17 +51,21 @@ const Cart: React.SFC<Props> = ({
     >
       <ScrollView>
         <SectionList
-          renderSectionHeader={({ section }) => (
-            <ItemTitle
-              style={{
-                paddingVertical: 8,
-                paddingHorizontal: 12,
-                backgroundColor: colors.beige,
-              }}
-            >
-              {section.title} ({section.data.length})
-            </ItemTitle>
-          )}
+          renderSectionHeader={({ section }) =>
+            section.data && section.data.length ? (
+              <ItemTitle
+                style={{
+                  paddingVertical: 8,
+                  paddingHorizontal: 12,
+                  backgroundColor: colors.beige,
+                }}
+              >
+                {section.title} ({section.data.length})
+              </ItemTitle>
+            ) : (
+              <ItemTitle>장바구니에 담긴 물건이 없습니다.</ItemTitle>
+            )
+          }
           renderItem={({ item, section }: any) => {
             return (
               <View
@@ -69,7 +75,16 @@ const Cart: React.SFC<Props> = ({
                   padding: 12,
                 }}
               >
-                <Avatar image={imageMap[allMenus[item].image]} size={80} />
+                <Avatar
+                  image={
+                    imageMap[
+                      allMenus[item]
+                        ? allMenus[item].image
+                        : imageMap['menu_a.png']
+                    ]
+                  }
+                  size={80}
+                />
                 <View
                   style={{
                     padding: 12,
@@ -88,11 +103,16 @@ const Cart: React.SFC<Props> = ({
                       color={colors.lightFont}
                     />
                   </TouchableOpacity>
-                  <ItemTitle>{allMenus[item].name}</ItemTitle>
+                  <ItemTitle>
+                    {allMenus[item] ? allMenus[item].name : ''}
+                  </ItemTitle>
                   <ItemDesc>
-                    {formatPrice(allMenus[item].price)} (합계{' '}
+                    {formatPrice(allMenus[item] ? allMenus[item].price : 0)}{' '}
+                    (합계{' '}
                     {formatPrice(
-                      values[section.title][item] * allMenus[item].price,
+                      allMenus[item]
+                        ? values[section.title][item] * allMenus[item].price
+                        : 0,
                     )}
                     )
                   </ItemDesc>
