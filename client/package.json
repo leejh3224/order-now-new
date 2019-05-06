@@ -25,7 +25,8 @@
     "redux-persist-expo-securestore": "^0.1.1",
     "redux-saga": "^0.16.0",
     "reselect": "^3.0.1",
-    "typesafe-actions": "^2.0.4"
+    "typesafe-actions": "^2.0.4",
+    "snyk": "^1.161.1"
   },
   "devDependencies": {
     "@types/expo": "^27.0.6",
@@ -48,9 +49,12 @@
   "scripts": {
     "start": "exp start --offline",
     "ios": "exp ios",
-    "test": "node_modules/.bin/jest"
+    "test": "node_modules/.bin/jest",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "jest": {
     "preset": "jest-expo"
-  }
+  },
+  "snyk": true
 }
