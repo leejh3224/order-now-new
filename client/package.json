@@ -10,7 +10,7 @@
     "expo": "^29.0.0",
     "formik": "^1.0.2",
     "lodash.isempty": "^4.4.0",
-    "lodash.merge": "^4.6.1",
+    "lodash.merge": "^4.6.2",
     "normalizr": "^3.2.4",
     "react": "^16.4.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-29.0.0.tar.gz",
