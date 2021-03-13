@@ -13,7 +13,7 @@
     "lodash.merge": "^4.6.1",
     "normalizr": "^3.2.4",
     "react": "^16.4.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-29.0.0.tar.gz",
+    "react-native": "0.64.0",
     "react-native-elements": "^0.19.1",
     "react-native-keyboard-aware-scroll-view": "^0.6.0",
     "react-native-step-indicator": "^0.0.9",
