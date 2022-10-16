@@ -7,7 +7,7 @@
     "@expo/vector-icons": "^6.3.1",
     "aws-amplify": "^1.0.4",
     "axios": "^0.18.0",
-    "expo": "^29.0.0",
+    "expo": "^34.0.1",
     "formik": "^1.0.2",
     "lodash.isempty": "^4.4.0",
     "lodash.merge": "^4.6.1",
